@@ -54,45 +54,36 @@ div.mt-2>.font-size-message { display: none !important }
 body {
     background-color: var(--co-bg) !important;
     background-image:
-        radial-gradient(ellipse 80% 60% at 15% 20%, rgba(232, 168, 73, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 85% 75%, rgba(58, 159, 212, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 50% 0%, rgba(58, 159, 212, 0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 50% at 80% 10%, rgba(232, 168, 73, 0.03) 0%, transparent 60%),
-        radial-gradient(circle at 20% 80%, rgba(58, 159, 212, 0.04) 0%, transparent 50%) !important;
+        radial-gradient(ellipse 60% 80% at 0% 50%, rgba(232, 168, 73, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(58, 159, 212, 0.08) 0%, transparent 70%),
+        linear-gradient(90deg, rgba(232, 168, 73, 0.03) 0%, transparent 40%, transparent 60%, rgba(58, 159, 212, 0.03) 100%) !important;
     position: relative !important;
     min-height: 100dvh !important;
     padding-bottom: 40px !important
 }
 
-/* Bokeh layer — split mood: warm gold left, cool blue right */
+/* Sun rays — left side warm glow */
 body::before {
     content: ''; position: fixed; inset: 0;
     background:
-        radial-gradient(circle 8px at 12% 18%, rgba(232, 168, 73, 0.10) 0%, transparent 100%),
-        radial-gradient(circle 12px at 88% 22%, rgba(58, 159, 212, 0.08) 0%, transparent 100%),
-        radial-gradient(circle 6px at 75% 65%, rgba(58, 159, 212, 0.08) 0%, transparent 100%),
-        radial-gradient(circle 10px at 25% 78%, rgba(232, 168, 73, 0.07) 0%, transparent 100%),
-        radial-gradient(circle 5px at 50% 35%, rgba(58, 159, 212, 0.06) 0%, transparent 100%),
-        radial-gradient(circle 14px at 92% 85%, rgba(58, 159, 212, 0.05) 0%, transparent 100%),
-        radial-gradient(circle 7px at 35% 50%, rgba(232, 168, 73, 0.06) 0%, transparent 100%),
-        radial-gradient(circle 9px at 65% 12%, rgba(58, 159, 212, 0.07) 0%, transparent 100%),
-        radial-gradient(circle 4px at 8% 55%, rgba(232, 168, 73, 0.08) 0%, transparent 100%),
-        radial-gradient(circle 11px at 45% 88%, rgba(58, 159, 212, 0.06) 0%, transparent 100%),
-        radial-gradient(circle 6px at 58% 42%, rgba(232, 168, 73, 0.05) 0%, transparent 100%),
-        radial-gradient(circle 8px at 82% 48%, rgba(58, 159, 212, 0.07) 0%, transparent 100%),
-        linear-gradient(175deg, transparent 0%, rgba(10, 14, 26, 0.6) 100%);
+        linear-gradient(215deg, transparent 45%, rgba(232, 168, 73, 0.04) 50%, transparent 55%),
+        linear-gradient(225deg, transparent 35%, rgba(232, 168, 73, 0.03) 40%, transparent 45%),
+        linear-gradient(210deg, transparent 55%, rgba(255, 217, 149, 0.025) 60%, transparent 65%),
+        linear-gradient(235deg, transparent 25%, rgba(232, 168, 73, 0.02) 30%, transparent 35%),
+        linear-gradient(220deg, transparent 65%, rgba(255, 217, 149, 0.03) 70%, transparent 75%),
+        radial-gradient(ellipse 50% 100% at 0% 60%, rgba(232, 168, 73, 0.06) 0%, transparent 80%);
     z-index: 0; pointer-events: none;
-    animation: co-bokehDrift 30s ease-in-out infinite alternate
+    transform-origin: 0% 100%;
+    animation: co-sunRays 12s ease-in-out infinite alternate
 }
 
-/* Ambient glow layer */
+/* Cool atmosphere — right side blue */
 body::after {
     content: ''; position: fixed; inset: 0;
     background:
-        radial-gradient(ellipse 40% 25% at 10% 30%, rgba(232, 168, 73, 0.04) 0%, transparent 100%),
-        radial-gradient(ellipse 35% 30% at 90% 60%, rgba(58, 159, 212, 0.04) 0%, transparent 100%),
-        radial-gradient(ellipse 50% 20% at 50% 90%, rgba(58, 159, 212, 0.03) 0%, transparent 100%),
-        radial-gradient(ellipse 30% 40% at 70% 15%, rgba(232, 168, 73, 0.03) 0%, transparent 100%);
+        radial-gradient(ellipse 50% 100% at 100% 40%, rgba(58, 159, 212, 0.06) 0%, transparent 80%),
+        radial-gradient(ellipse 30% 50% at 85% 20%, rgba(58, 159, 212, 0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 95% 70%, rgba(58, 159, 212, 0.03) 0%, transparent 70%);
     z-index: 0; pointer-events: none;
     animation: co-orbDrift 20s ease-in-out infinite alternate
 }
@@ -149,23 +140,25 @@ div.mt-4 { background: transparent !important; background-color: transparent !im
         pointer-events: none !important
     }
 
-    /* Character name — "Nabi" with glitch reveal to "Seora" */
+    /* Tagline — centered in header */
     .ant-row.ant-row-center>.ant-col-lg-6:first-child::after {
-        content: 'Nabi' !important;
+        content: '6 GREETINGS  ·  15 IMAGES' !important;
         grid-column: 1 !important;
         grid-row: 2 !important;
         align-self: end !important;
+        justify-self: center !important;
         z-index: 1 !important;
-        font-family: var(--co-font-display) !important;
-        font-size: clamp(1.8em, 3.5vw, 2.5em) !important;
-        font-weight: 900 !important;
-        color: #fff !important;
+        font-family: var(--co-font-body) !important;
+        font-size: 0.78em !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.85) !important;
         white-space: nowrap !important;
-        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7) !important;
-        letter-spacing: 0.01em !important;
-        line-height: 1.1 !important;
-        padding-bottom: 2px !important;
-        animation: co-nameGlitch 6s ease-in-out infinite !important
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
+        letter-spacing: 0.14em !important;
+        text-transform: uppercase !important;
+        line-height: 1 !important;
+        padding-bottom: 6px !important;
+        animation: none !important
     }
 
     /* All direct children above gradient */
@@ -255,20 +248,23 @@ div.mt-4 { background: transparent !important; background-color: transparent !im
         pointer-events: none !important
     }
     .ant-col.text-left.ant-col-xs-24.ant-col-lg-6::after {
-        content: 'Nabi' !important;
+        content: '6 GREETINGS  ·  15 IMAGES' !important;
         grid-column: 1 !important;
         grid-row: 2 !important;
         align-self: end !important;
+        justify-self: center !important;
         z-index: 1 !important;
-        font-family: var(--co-font-display) !important;
-        font-size: 1.3em !important;
-        font-weight: 900 !important;
-        color: #fff !important;
+        font-family: var(--co-font-body) !important;
+        font-size: 0.65em !important;
+        font-weight: 600 !important;
+        color: rgba(255, 255, 255, 0.85) !important;
         white-space: nowrap !important;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
-        line-height: 1.1 !important;
-        padding-bottom: 2px !important;
-        animation: co-nameGlitch 6s ease-in-out infinite !important
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
+        letter-spacing: 0.12em !important;
+        text-transform: uppercase !important;
+        line-height: 1 !important;
+        padding-bottom: 4px !important;
+        animation: none !important
     }
     .ant-col.text-left.ant-col-xs-24.ant-col-lg-6>* {
         position: relative !important;
@@ -364,26 +360,35 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn:active {
     transition-duration: 0s !important
 }
 
-/* Chat With — accent gradient, BIGGER */
+/* Chat With — warm gradient, constant glow, black text */
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) {
     flex-shrink: 0 !important;
     width: auto !important;
     height: 50px !important;
-    background: linear-gradient(135deg, var(--co-accent), var(--co-accent-deep)) !important;
-    color: #fff !important;
-    font-weight: 600 !important;
+    background: linear-gradient(135deg, #ffd995, #e8a849) !important;
+    color: #0a0e1a !important;
+    font-weight: 700 !important;
     font-size: 0.88em !important;
     border: none !important;
     clip-path: none !important;
     padding: 0 24px !important;
     border-radius: var(--co-radius-sm) !important;
-    box-shadow: 0 0 12px rgba(232, 168, 73, 0.2), 0 0 24px rgba(58, 159, 212, 0.1) !important
+    box-shadow: 0 0 16px rgba(232, 168, 73, 0.4), 0 0 32px rgba(232, 168, 73, 0.15) !important;
+    animation: co-chatGlow 2.5s ease-in-out infinite !important
+}
+div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square) svg {
+    color: #0a0e1a !important; stroke: #0a0e1a !important
 }
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square)::before { display: none !important }
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover {
     transform: none !important;
-    background: linear-gradient(135deg, var(--co-accent-soft), var(--co-accent)) !important;
-    box-shadow: 0 4px 20px var(--co-accent-glow) !important
+    background: linear-gradient(135deg, #95d4e8, #3a9fd4) !important;
+    color: #fff !important;
+    box-shadow: 0 0 20px rgba(58, 159, 212, 0.5), 0 0 40px rgba(58, 159, 212, 0.2) !important;
+    animation: none !important
+}
+div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover svg {
+    color: #fff !important; stroke: #fff !important
 }
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover::before { display: none !important }
 
@@ -431,18 +436,12 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn[aria-describedby] { disp
     }
 }
 
-/* Desktop: Import+Download → square icon-only buttons + Rent a Girlfriend badge */
+/* Desktop: Import+Download — full text, normal size */
 @media (min-width:992px) {
-    /* Hide text labels on Import and Download */
-    div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn span:not(.ant-btn-icon):not(:has(svg)) {
-        display: none !important
-    }
-    /* Square icon buttons — match Chat button height */
     div.mt-4:has(svg.lucide-messages-square)>.flex>button.ant-btn {
-        width: 50px !important;
+        width: auto !important;
         height: 50px !important;
-        padding: 0 !important;
-        justify-content: center !important;
+        padding: 0 14px !important;
         flex-shrink: 0 !important
     }
     div.mt-4:has(svg.lucide-messages-square)>.flex {
@@ -733,39 +732,36 @@ div.mt-2 {
     background: transparent !important; position: relative; z-index: 1
 }
 
-/* ═══ FLOATING PARTICLES ═══ */
+/* ═══ RAIN EFFECT — right side ═══ */
 #root::before,
 #root::after {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 0;
-    font-size: 8px; line-height: 1;
-    color: rgba(232, 168, 73, 0.10)
+    position: fixed; top: 0; right: 0; width: 55%; height: 100%;
+    pointer-events: none; z-index: 0
 }
 #root::before {
-    content: '·';
-    animation: co-heartsA 22s linear infinite;
-    text-shadow:
-        10vw 15vh 0 rgba(232, 168, 73, 0.06),
-        25vw 45vh 0 rgba(58, 159, 212, 0.05),
-        40vw 80vh 0 rgba(58, 159, 212, 0.06),
-        55vw 25vh 0 rgba(58, 159, 212, 0.05),
-        70vw 60vh 0 rgba(232, 168, 73, 0.05),
-        85vw 35vh 0 rgba(58, 159, 212, 0.06),
-        15vw 70vh 0 rgba(58, 159, 212, 0.04),
-        60vw 90vh 0 rgba(232, 168, 73, 0.05)
+    content: '';
+    background: repeating-linear-gradient(
+        100deg,
+        transparent,
+        transparent 98px,
+        rgba(58, 159, 212, 0.04) 98px,
+        rgba(58, 159, 212, 0.04) 99px
+    );
+    background-size: 100px 100%;
+    animation: co-rain 1.8s linear infinite
 }
 #root::after {
-    content: '✦';
-    animation: co-heartsB 28s linear infinite;
-    font-size: 6px;
-    text-shadow:
-        8vw 30vh 0 rgba(58, 159, 212, 0.04),
-        33vw 65vh 0 rgba(232, 168, 73, 0.04),
-        48vw 10vh 0 rgba(58, 159, 212, 0.05),
-        62vw 50vh 0 rgba(58, 159, 212, 0.04),
-        78vw 75vh 0 rgba(232, 168, 73, 0.04),
-        92vw 20vh 0 rgba(58, 159, 212, 0.05),
-        20vw 85vh 0 rgba(58, 159, 212, 0.04)
+    content: '';
+    background: repeating-linear-gradient(
+        97deg,
+        transparent,
+        transparent 148px,
+        rgba(58, 159, 212, 0.03) 148px,
+        rgba(58, 159, 212, 0.03) 149px
+    );
+    background-size: 150px 100%;
+    animation: co-rain 2.6s linear infinite;
+    opacity: 0.7
 }
 
 /* ═══ KEYFRAMES ═══ */
@@ -810,15 +806,22 @@ div.mt-2 {
 }
 
 /* Name glitch — visual distortion hints at hidden identity */
-@keyframes co-nameGlitch {
-    0%, 82% { color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.7); letter-spacing: 0.01em; opacity: 1 }
-    83% { color: #3a9fd4; text-shadow: 3px 0 0 #e8a849, -3px 0 0 #3a9fd4; letter-spacing: 0.06em; opacity: 0.9 }
-    84% { color: #fff; text-shadow: -2px 0 0 #3a9fd4, 2px 0 0 #e8a849; opacity: 1 }
-    86% { color: #e8a849; text-shadow: 4px 2px 0 rgba(58,159,212,0.6), -4px -2px 0 rgba(232,168,73,0.4); letter-spacing: 0.1em; opacity: 0.85 }
-    87% { color: rgba(255,255,255,0.4); text-shadow: -1px 3px 0 #3a9fd4, 1px -3px 0 #e8a849; opacity: 0.6 }
-    89% { color: #d4a04a; text-shadow: 2px 0 0 #3a9fd4; letter-spacing: 0.03em; opacity: 0.95 }
-    91% { color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.7); letter-spacing: 0.01em; opacity: 1 }
-    100% { color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.7); letter-spacing: 0.01em; opacity: 1 }
+/* Name glitch removed — using tagline now */
+
+@keyframes co-sunRays {
+    0% { opacity: 0.6; transform: scale(1) }
+    50% { opacity: 1; transform: scale(1.02) }
+    100% { opacity: 0.7; transform: scale(0.99) }
+}
+
+@keyframes co-rain {
+    0% { background-position: 0 -100vh }
+    100% { background-position: 0 100vh }
+}
+
+@keyframes co-chatGlow {
+    0%, 100% { box-shadow: 0 0 12px rgba(232, 168, 73, 0.3), 0 0 24px rgba(232, 168, 73, 0.1) }
+    50% { box-shadow: 0 0 20px rgba(232, 168, 73, 0.5), 0 0 40px rgba(232, 168, 73, 0.2) }
 }
 
 @keyframes co-swipeHint {
@@ -859,7 +862,7 @@ div.mt-2 {
 
 /* ═══ CARDS ═══ */
 .co-card {
-    background: var(--co-surface); 
+    background: linear-gradient(145deg, rgba(12, 18, 32, 0.92) 0%, rgba(10, 14, 26, 0.96) 100%); 
     border: 1px solid rgba(58, 159, 212, 0.2);
     border-left: 3px solid rgba(232, 168, 73, 0.5);
     border-radius: var(--co-radius); padding: 24px; margin-top: 16px;
@@ -898,100 +901,93 @@ div.mt-2 {
 
 /* About divider removed */
 
-/* ═══ SCENARIOS ═══ */
-.co-scenarios { padding: 0; overflow: visible }
+/* ═══ SCENARIOS — HOVER IMAGE PREVIEW ═══ */
+.co-scenarios { padding: 0; overflow: hidden }
 .co-scenarios .co-card-label {
-    padding: 24px 24px 14px;
-    position: relative
-}
-/* Swipe hint — right-aligned */
-.co-scenarios .co-card-label::after {
-    content: '← Swipe →';
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: var(--co-font-body);
-    font-size: 0.65em;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.3);
-    letter-spacing: 0.08em;
-    animation: co-swipeHint 2.5s ease-in-out infinite
+    padding: 24px 24px 14px
 }
 
-.co-sc-list {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 0;
-    scrollbar-width: thin;
-    scrollbar-color: var(--co-accent-deep) transparent;
-    padding-bottom: 18px
-}
-.co-sc-list::-webkit-scrollbar { height: 6px }
-.co-sc-list::-webkit-scrollbar-track { background: transparent; margin: 0 16px }
-.co-sc-list::-webkit-scrollbar-thumb {
-    background: var(--co-accent-deep); border-radius: 3px
-}
-.co-sc-list::-webkit-scrollbar-thumb:hover {
-    background: var(--co-accent)
+.co-sc-layout {
+    display: flex; gap: 0; min-height: 360px
 }
 
-.co-sc-item {
-    flex: 0 0 50%;
-    min-width: 0;
-    scroll-snap-align: start;
-    display: flex;
-    align-items: stretch;
-    gap: 16px;
-    padding: 18px 20px;
-    border-left: 1px solid var(--co-glass-border);
-    transition: background .25s ease;
+/* Image preview — left 33% */
+.co-sc-preview {
+    flex: 0 0 33%; position: relative; overflow: hidden;
+    background: rgba(8, 12, 22, 0.95);
+    border-right: 1px solid rgba(58, 159, 212, 0.1)
+}
+.co-sc-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--co-font-body); font-size: 0.9em; font-weight: 500;
+    color: var(--co-text-dim); letter-spacing: 0.02em;
+    transition: opacity 0.3s ease;
+    z-index: 1
+}
+.co-sc-pimg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    opacity: 0; transition: opacity 0.4s ease;
+    z-index: 2
+}
+
+/* Hide placeholder when hovering entries */
+.co-sc-layout:has(.co-sc-entry:hover) .co-sc-placeholder { opacity: 0 }
+
+/* Show image on entry hover — :has() with nth-child */
+.co-sc-layout:has(.co-sc-entry:nth-child(1):hover) .co-sc-pimg:nth-child(2) { opacity: 1 }
+.co-sc-layout:has(.co-sc-entry:nth-child(2):hover) .co-sc-pimg:nth-child(3) { opacity: 1 }
+.co-sc-layout:has(.co-sc-entry:nth-child(3):hover) .co-sc-pimg:nth-child(4) { opacity: 1 }
+.co-sc-layout:has(.co-sc-entry:nth-child(4):hover) .co-sc-pimg:nth-child(5) { opacity: 1 }
+.co-sc-layout:has(.co-sc-entry:nth-child(5):hover) .co-sc-pimg:nth-child(6) { opacity: 1 }
+.co-sc-layout:has(.co-sc-entry:nth-child(6):hover) .co-sc-pimg:nth-child(7) { opacity: 1 }
+
+/* Scenario entries — right 67% */
+.co-sc-entries {
+    flex: 1; display: flex; flex-direction: column;
+    min-height: 360px
+}
+
+.co-sc-entry {
+    flex: 1; display: flex; align-items: center; gap: 14px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(58, 159, 212, 0.06);
     cursor: default;
-    box-sizing: border-box
+    transition: background 0.25s ease, border-color 0.25s ease
 }
-.co-sc-item:first-child { border-left: none }
-.co-sc-item:hover { background: rgba(232, 168, 73, 0.04) }
-
-.co-sc-img {
-    width: 120px; height: 200px; border-radius: var(--co-radius-xs);
-    object-fit: cover; object-position: top center;
-    flex-shrink: 0; border: 1px solid var(--co-glass-border);
-    transition: transform .3s ease, box-shadow .3s ease
-}
-.co-sc-item:hover .co-sc-img {
-    transform: scale(1.03);
-    box-shadow: 0 4px 16px var(--co-accent-glow)
-}
-
-.co-sc-body {
-    display: flex; flex-direction: column; justify-content: center;
-    flex: 1; min-width: 0
+.co-sc-entry:last-child { border-bottom: none }
+.co-sc-entry:hover {
+    background: linear-gradient(90deg, rgba(232, 168, 73, 0.06) 0%, rgba(58, 159, 212, 0.04) 100%);
+    border-left: 2px solid rgba(232, 168, 73, 0.5);
+    padding-left: 18px
 }
 
 .co-sc-num {
-    font-family: var(--co-font-mono); font-size: 0.85em; font-weight: 700;
-    color: var(--co-accent-soft); margin-bottom: 6px;
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 32px; height: 24px;
-    border: 1px solid rgba(232, 168, 73, 0.3); border-radius: 6px;
-    background: rgba(232, 168, 73, 0.08)
+    font-family: var(--co-font-mono); font-size: 0.8em; font-weight: 700;
+    color: var(--co-accent); min-width: 28px;
+    opacity: 0.5; transition: opacity 0.25s ease
+}
+.co-sc-entry:hover .co-sc-num { opacity: 1 }
+
+.co-sc-etext { flex: 1; min-width: 0 }
+.co-sc-etext h4 {
+    font-family: var(--co-font-display); font-size: 0.88em; font-weight: 700;
+    color: var(--co-text); margin: 0 0 2px; line-height: 1.3;
+    transition: color 0.25s ease
+}
+.co-sc-entry:hover .co-sc-etext h4 { color: var(--co-accent-soft) }
+.co-sc-etext p {
+    font-size: 0.78em; color: var(--co-text-dim); margin: 0; line-height: 1.4
 }
 
-.co-sc-text { flex: 1; min-width: 0 }
-.co-sc-text h4 {
-    font-family: var(--co-font-display); font-size: 0.95em; font-weight: 700;
-    color: var(--co-text); margin: 0 0 4px; line-height: 1.3
-}
-.co-sc-text p { font-size: 0.85em; color: var(--co-text-dim); margin: 0; line-height: 1.5 }
-.co-sc-tag {
-    font-size: 0.65em; padding: 2px 8px; border-radius: 0;
-    background: var(--co-accent-glow); border: 1px solid rgba(232, 168, 73, 0.15);
-    color: var(--co-accent-soft); font-family: var(--co-font-body);
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
-    display: inline-block; margin-top: 6px
+/* Mobile scenarios */
+@media (max-width: 640px) {
+    .co-sc-layout { flex-direction: column; min-height: auto }
+    .co-sc-preview { flex: none; height: 220px }
+    .co-sc-entries { min-height: auto }
+    .co-sc-entry { padding: 12px 16px }
+    .co-sc-entry:hover { padding-left: 14px }
 }
 
 /* ═══ PRESET BANNER — standalone hidden, now inside Creator's Note ═══ */
@@ -1020,8 +1016,9 @@ div.mt-2 {
 .co-preset-inline span { position: relative; z-index: 1 }
 
 /* ═══ FEEDBACK ═══ */
-.co-feedback { text-align: center; animation: co-fadeUp .6s ease .35s both }
-.co-feedback p { color: var(--co-text-dim); margin-bottom: 16px !important }
+.co-feedback { animation: co-fadeUp .6s ease .35s both }
+.co-right-stack .co-feedback { text-align: left }
+.co-feedback p { color: var(--co-text-dim); margin-bottom: 12px !important }
 
 .co-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -1073,7 +1070,11 @@ div.mt-2 {
     transition: background .25s ease, border-color .25s ease;
     text-decoration: none
 }
-.co-credit:hover { opacity: 1 }
+.co-credit:hover {
+    background: rgba(232, 168, 73, 0.05);
+    border-color: rgba(232, 168, 73, 0.2);
+    opacity: 1
+}
 
 .co-credit-avatar {
     width: 44px; height: 44px; border-radius: 0;

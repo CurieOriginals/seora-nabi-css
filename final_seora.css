@@ -54,36 +54,39 @@ div.mt-2>.font-size-message { display: none !important }
 body {
     background-color: var(--co-bg) !important;
     background-image:
-        radial-gradient(ellipse 60% 80% at 0% 50%, rgba(232, 168, 73, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(58, 159, 212, 0.08) 0%, transparent 70%),
-        linear-gradient(90deg, rgba(232, 168, 73, 0.03) 0%, transparent 40%, transparent 60%, rgba(58, 159, 212, 0.03) 100%) !important;
+        radial-gradient(ellipse 55% 80% at 0% 50%, rgba(232, 168, 73, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 80% at 100% 50%, rgba(58, 159, 212, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 15% 30%, rgba(255, 217, 149, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 85% 70%, rgba(58, 159, 212, 0.08) 0%, transparent 70%),
+        linear-gradient(90deg, rgba(232, 168, 73, 0.07) 0%, transparent 30%, transparent 70%, rgba(58, 159, 212, 0.07) 100%) !important;
     position: relative !important;
     min-height: 100dvh !important;
     padding-bottom: 40px !important
 }
 
-/* Sun rays — left side warm glow */
+/* Sun rays — left side, visible beams radiating from bottom-left */
 body::before {
     content: ''; position: fixed; inset: 0;
     background:
-        linear-gradient(215deg, transparent 45%, rgba(232, 168, 73, 0.04) 50%, transparent 55%),
-        linear-gradient(225deg, transparent 35%, rgba(232, 168, 73, 0.03) 40%, transparent 45%),
-        linear-gradient(210deg, transparent 55%, rgba(255, 217, 149, 0.025) 60%, transparent 65%),
-        linear-gradient(235deg, transparent 25%, rgba(232, 168, 73, 0.02) 30%, transparent 35%),
-        linear-gradient(220deg, transparent 65%, rgba(255, 217, 149, 0.03) 70%, transparent 75%),
-        radial-gradient(ellipse 50% 100% at 0% 60%, rgba(232, 168, 73, 0.06) 0%, transparent 80%);
+        linear-gradient(215deg, transparent 30%, rgba(232, 168, 73, 0.14) 45%, transparent 60%),
+        linear-gradient(225deg, transparent 20%, rgba(255, 217, 149, 0.11) 35%, transparent 50%),
+        linear-gradient(210deg, transparent 40%, rgba(232, 168, 73, 0.10) 55%, transparent 70%),
+        linear-gradient(235deg, transparent 10%, rgba(255, 217, 149, 0.08) 25%, transparent 40%),
+        linear-gradient(220deg, transparent 50%, rgba(232, 168, 73, 0.12) 65%, transparent 80%),
+        linear-gradient(230deg, transparent 0%, rgba(255, 217, 149, 0.07) 15%, transparent 30%),
+        radial-gradient(ellipse 50% 90% at 0% 60%, rgba(232, 168, 73, 0.16) 0%, transparent 70%);
     z-index: 0; pointer-events: none;
     transform-origin: 0% 100%;
-    animation: co-sunRays 12s ease-in-out infinite alternate
+    animation: co-sunRays 10s ease-in-out infinite alternate
 }
 
-/* Cool atmosphere — right side blue */
+/* Cool atmosphere — right side blue, vibrant */
 body::after {
     content: ''; position: fixed; inset: 0;
     background:
-        radial-gradient(ellipse 50% 100% at 100% 40%, rgba(58, 159, 212, 0.06) 0%, transparent 80%),
-        radial-gradient(ellipse 30% 50% at 85% 20%, rgba(58, 159, 212, 0.04) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 95% 70%, rgba(58, 159, 212, 0.03) 0%, transparent 70%);
+        radial-gradient(ellipse 50% 100% at 100% 40%, rgba(58, 159, 212, 0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 50% at 85% 15%, rgba(58, 159, 212, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 95% 75%, rgba(58, 159, 212, 0.08) 0%, transparent 60%);
     z-index: 0; pointer-events: none;
     animation: co-orbDrift 20s ease-in-out infinite alternate
 }
@@ -732,36 +735,34 @@ div.mt-2 {
     background: transparent !important; position: relative; z-index: 1
 }
 
-/* ═══ RAIN EFFECT — right side ═══ */
+/* ═══ RAIN EFFECT — right side, falling top to bottom ═══ */
 #root::before,
 #root::after {
-    position: fixed; top: 0; right: 0; width: 55%; height: 100%;
+    position: fixed; top: -100%; right: 0; width: 55%; height: 300%;
     pointer-events: none; z-index: 0
 }
 #root::before {
     content: '';
-    background: repeating-linear-gradient(
-        100deg,
-        transparent,
-        transparent 98px,
-        rgba(58, 159, 212, 0.04) 98px,
-        rgba(58, 159, 212, 0.04) 99px
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 30px,
+        rgba(58, 159, 212, 0.07) 30px,
+        rgba(58, 159, 212, 0.07) 31px
     );
-    background-size: 100px 100%;
-    animation: co-rain 1.8s linear infinite
+    animation: co-rainFall 1.4s linear infinite
 }
 #root::after {
     content: '';
-    background: repeating-linear-gradient(
-        97deg,
-        transparent,
-        transparent 148px,
-        rgba(58, 159, 212, 0.03) 148px,
-        rgba(58, 159, 212, 0.03) 149px
+    background-image: repeating-linear-gradient(
+        2deg,
+        transparent 0px,
+        transparent 45px,
+        rgba(58, 159, 212, 0.05) 45px,
+        rgba(58, 159, 212, 0.05) 46px
     );
-    background-size: 150px 100%;
-    animation: co-rain 2.6s linear infinite;
-    opacity: 0.7
+    animation: co-rainFall 2s linear infinite;
+    animation-delay: -0.7s
 }
 
 /* ═══ KEYFRAMES ═══ */
@@ -814,9 +815,9 @@ div.mt-2 {
     100% { opacity: 0.7; transform: scale(0.99) }
 }
 
-@keyframes co-rain {
-    0% { background-position: 0 -100vh }
-    100% { background-position: 0 100vh }
+@keyframes co-rainFall {
+    0% { transform: translateY(-33.33%) }
+    100% { transform: translateY(33.33%) }
 }
 
 @keyframes co-chatGlow {
@@ -901,21 +902,20 @@ div.mt-2 {
 
 /* About divider removed */
 
-/* ═══ SCENARIOS — HOVER IMAGE PREVIEW ═══ */
-.co-scenarios { padding: 0; overflow: hidden }
-.co-scenarios .co-card-label {
-    padding: 24px 24px 14px
+/* ═══ SCENARIOS — TWO-BOX LAYOUT WITH HOVER PREVIEW ═══ */
+.co-sc-row {
+    display: flex; gap: 16px; margin-top: 16px
 }
 
-.co-sc-layout {
-    display: flex; gap: 0; min-height: 360px
+/* Preview box — left 33%, no label */
+.co-sc-preview-box {
+    flex: 0 0 33%; max-width: 33%; margin-top: 0;
+    padding: 12px !important; overflow: hidden;
+    display: flex; align-items: stretch
 }
-
-/* Image preview — left 33% */
-.co-sc-preview {
-    flex: 0 0 33%; position: relative; overflow: hidden;
-    background: rgba(8, 12, 22, 0.95);
-    border-right: 1px solid rgba(58, 159, 212, 0.1)
+.co-sc-imgwrap {
+    position: relative; width: 100%; min-height: 480px;
+    background: rgba(8, 12, 22, 0.95); overflow: hidden
 }
 .co-sc-placeholder {
     position: absolute; inset: 0;
@@ -932,86 +932,91 @@ div.mt-2 {
     z-index: 2
 }
 
-/* Hide placeholder when hovering entries */
-.co-sc-layout:has(.co-sc-entry:hover) .co-sc-placeholder { opacity: 0 }
+/* Hide placeholder when any entry is hovered */
+.co-sc-row:has(.co-sc-entry:hover) .co-sc-placeholder { opacity: 0 }
 
-/* Show image on entry hover — :has() with nth-child */
-.co-sc-layout:has(.co-sc-entry:nth-child(1):hover) .co-sc-pimg:nth-child(2) { opacity: 1 }
-.co-sc-layout:has(.co-sc-entry:nth-child(2):hover) .co-sc-pimg:nth-child(3) { opacity: 1 }
-.co-sc-layout:has(.co-sc-entry:nth-child(3):hover) .co-sc-pimg:nth-child(4) { opacity: 1 }
-.co-sc-layout:has(.co-sc-entry:nth-child(4):hover) .co-sc-pimg:nth-child(5) { opacity: 1 }
-.co-sc-layout:has(.co-sc-entry:nth-child(5):hover) .co-sc-pimg:nth-child(6) { opacity: 1 }
-.co-sc-layout:has(.co-sc-entry:nth-child(6):hover) .co-sc-pimg:nth-child(7) { opacity: 1 }
+/* Show matching image — nth-of-type targets only img elements */
+.co-sc-row:has(.co-sc-entry:nth-child(1):hover) .co-sc-pimg:nth-of-type(1) { opacity: 1 }
+.co-sc-row:has(.co-sc-entry:nth-child(2):hover) .co-sc-pimg:nth-of-type(2) { opacity: 1 }
+.co-sc-row:has(.co-sc-entry:nth-child(3):hover) .co-sc-pimg:nth-of-type(3) { opacity: 1 }
+.co-sc-row:has(.co-sc-entry:nth-child(4):hover) .co-sc-pimg:nth-of-type(4) { opacity: 1 }
+.co-sc-row:has(.co-sc-entry:nth-child(5):hover) .co-sc-pimg:nth-of-type(5) { opacity: 1 }
+.co-sc-row:has(.co-sc-entry:nth-child(6):hover) .co-sc-pimg:nth-of-type(6) { opacity: 1 }
 
-/* Scenario entries — right 67% */
+/* List box — right, with label */
+.co-sc-list-box {
+    flex: 1; margin-top: 0; padding: 0 !important; overflow: hidden;
+    display: flex; flex-direction: column
+}
+.co-sc-list-box .co-card-label {
+    padding: 24px 24px 14px; flex-shrink: 0
+}
+
+/* Entries container — fills remaining height */
 .co-sc-entries {
-    flex: 1; display: flex; flex-direction: column;
-    min-height: 360px
+    flex: 1; display: flex; flex-direction: column
 }
 
 .co-sc-entry {
-    flex: 1; display: flex; align-items: center; gap: 14px;
-    padding: 0 20px;
+    flex: 1; display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
     border-bottom: 1px solid rgba(58, 159, 212, 0.06);
     cursor: default;
-    transition: background 0.25s ease, border-color 0.25s ease
+    transition: background 0.25s ease, border-color 0.25s ease, padding 0.25s ease
 }
 .co-sc-entry:last-child { border-bottom: none }
 .co-sc-entry:hover {
     background: linear-gradient(90deg, rgba(232, 168, 73, 0.06) 0%, rgba(58, 159, 212, 0.04) 100%);
     border-left: 2px solid rgba(232, 168, 73, 0.5);
-    padding-left: 18px
+    padding-left: 22px
 }
 
 .co-sc-num {
-    font-family: var(--co-font-mono); font-size: 0.8em; font-weight: 700;
-    color: var(--co-accent); min-width: 28px;
-    opacity: 0.5; transition: opacity 0.25s ease
+    font-family: var(--co-font-mono); font-size: 0.85em; font-weight: 700;
+    color: var(--co-accent-soft); min-width: 28px;
+    opacity: 0.65; transition: opacity 0.25s ease
 }
 .co-sc-entry:hover .co-sc-num { opacity: 1 }
 
 .co-sc-etext { flex: 1; min-width: 0 }
 .co-sc-etext h4 {
-    font-family: var(--co-font-display); font-size: 0.88em; font-weight: 700;
-    color: var(--co-text); margin: 0 0 2px; line-height: 1.3;
+    font-family: var(--co-font-display); font-size: 0.95em; font-weight: 700;
+    color: var(--co-text); margin: 0 0 3px; line-height: 1.3;
     transition: color 0.25s ease
 }
 .co-sc-entry:hover .co-sc-etext h4 { color: var(--co-accent-soft) }
 .co-sc-etext p {
-    font-size: 0.78em; color: var(--co-text-dim); margin: 0; line-height: 1.4
+    font-size: 0.84em; color: var(--co-text-dim); margin: 0; line-height: 1.5
 }
 
 /* Mobile scenarios */
 @media (max-width: 640px) {
-    .co-sc-layout { flex-direction: column; min-height: auto }
-    .co-sc-preview { flex: none; height: 220px }
+    .co-sc-row { flex-direction: column; gap: 12px }
+    .co-sc-preview-box { flex: none; max-width: 100% }
+    .co-sc-imgwrap { min-height: 300px }
     .co-sc-entries { min-height: auto }
-    .co-sc-entry { padding: 12px 16px }
+    .co-sc-entry { padding: 14px 16px }
     .co-sc-entry:hover { padding-left: 14px }
 }
 
 /* ═══ PRESET BANNER — standalone hidden, now inside Creator's Note ═══ */
 .co-preset-link { display: none !important }
 
-/* Inline preset button */
+/* Inline preset button — styled like co-btn */
 .co-preset-inline {
-    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-    margin-top: 14px; padding: 8px 16px; border-radius: var(--co-radius-sm);
-    background: linear-gradient(135deg, rgba(232, 168, 73, 0.1), rgba(58, 159, 212, 0.1));
-    border: 1px solid rgba(232, 168, 73, 0.25);
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 14px; padding: 10px 28px; border-radius: 0;
+    background: transparent;
+    border: 1px solid rgba(232, 168, 73, 0.35);
     text-decoration: none; color: var(--co-accent-soft); font-family: var(--co-font-body);
-    font-size: 0.75em; font-weight: 600; letter-spacing: 0.03em;
-    transition: var(--co-btn-transition); position: relative; overflow: hidden
-}
-.co-preset-inline::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(232, 168, 73, 0.08), transparent);
-    background-size: 200% 100%; animation: co-shimmer 3s ease infinite
+    font-size: 0.85em; font-weight: 600; letter-spacing: 0.03em;
+    transition: var(--co-btn-transition); box-shadow: none
 }
 .co-preset-inline:hover {
-    background: linear-gradient(135deg, rgba(232, 168, 73, 0.18), rgba(58, 159, 212, 0.18));
-    border-color: var(--co-accent); color: #fff; opacity: 1;
-    box-shadow: 0 0 16px rgba(232, 168, 73, 0.1)
+    transform: translateY(-2px); color: #fff; opacity: 1;
+    background: linear-gradient(135deg, rgba(232, 168, 73, 0.15), rgba(58, 159, 212, 0.15));
+    border-color: var(--co-accent);
+    box-shadow: 0 4px 16px rgba(232, 168, 73, 0.15)
 }
 .co-preset-inline span { position: relative; z-index: 1 }
 

@@ -52,43 +52,29 @@ spacer {
 div.mt-2>.font-size-message { display: none !important }
 
 body {
-    background-color: var(--co-bg) !important;
+    background-color: #0a0e1a !important;
     background-image:
-        radial-gradient(ellipse 55% 80% at 0% 50%, rgba(232, 168, 73, 0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 55% 80% at 100% 50%, rgba(58, 159, 212, 0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 30% 40% at 15% 30%, rgba(255, 217, 149, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 30% 40% at 85% 70%, rgba(58, 159, 212, 0.08) 0%, transparent 70%),
-        linear-gradient(90deg, rgba(232, 168, 73, 0.07) 0%, transparent 30%, transparent 70%, rgba(58, 159, 212, 0.07) 100%) !important;
+        linear-gradient(180deg, #1a1020 0%, #0d0f1e 30%, #0a0e1a 60%, #080c16 100%) !important;
     position: relative !important;
     min-height: 100dvh !important;
     padding-bottom: 40px !important
 }
 
-/* Sun rays — left side, visible beams radiating from bottom-left */
+/* Warm golden glow — left side, floats up and down */
 body::before {
-    content: ''; position: fixed; inset: 0;
-    background:
-        linear-gradient(215deg, transparent 30%, rgba(232, 168, 73, 0.14) 45%, transparent 60%),
-        linear-gradient(225deg, transparent 20%, rgba(255, 217, 149, 0.11) 35%, transparent 50%),
-        linear-gradient(210deg, transparent 40%, rgba(232, 168, 73, 0.10) 55%, transparent 70%),
-        linear-gradient(235deg, transparent 10%, rgba(255, 217, 149, 0.08) 25%, transparent 40%),
-        linear-gradient(220deg, transparent 50%, rgba(232, 168, 73, 0.12) 65%, transparent 80%),
-        linear-gradient(230deg, transparent 0%, rgba(255, 217, 149, 0.07) 15%, transparent 30%),
-        radial-gradient(ellipse 50% 90% at 0% 60%, rgba(232, 168, 73, 0.16) 0%, transparent 70%);
+    content: ''; position: fixed; left: 0; top: 0; width: 50%; height: 100%;
+    background: radial-gradient(ellipse 80% 50% at 20% 50%, rgba(232, 168, 73, 0.14) 0%, transparent 70%);
     z-index: 0; pointer-events: none;
-    transform-origin: 0% 100%;
-    animation: co-sunRays 10s ease-in-out infinite alternate
+    animation: co-glowWarm 8s ease-in-out infinite
 }
 
-/* Cool atmosphere — right side blue, vibrant */
+/* Cool blue glow — right side, floats up and down offset */
 body::after {
-    content: ''; position: fixed; inset: 0;
-    background:
-        radial-gradient(ellipse 50% 100% at 100% 40%, rgba(58, 159, 212, 0.16) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 50% at 85% 15%, rgba(58, 159, 212, 0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 95% 75%, rgba(58, 159, 212, 0.08) 0%, transparent 60%);
+    content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
+    background: radial-gradient(ellipse 80% 50% at 80% 50%, rgba(58, 159, 212, 0.14) 0%, transparent 70%);
     z-index: 0; pointer-events: none;
-    animation: co-orbDrift 20s ease-in-out infinite alternate
+    animation: co-glowCool 8s ease-in-out infinite;
+    animation-delay: -4s
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
@@ -735,35 +721,6 @@ div.mt-2 {
     background: transparent !important; position: relative; z-index: 1
 }
 
-/* ═══ RAIN EFFECT — right side, falling top to bottom ═══ */
-#root::before,
-#root::after {
-    position: fixed; top: -100%; right: 0; width: 55%; height: 300%;
-    pointer-events: none; z-index: 0
-}
-#root::before {
-    content: '';
-    background-image: repeating-linear-gradient(
-        0deg,
-        transparent 0px,
-        transparent 30px,
-        rgba(58, 159, 212, 0.07) 30px,
-        rgba(58, 159, 212, 0.07) 31px
-    );
-    animation: co-rainFall 1.4s linear infinite
-}
-#root::after {
-    content: '';
-    background-image: repeating-linear-gradient(
-        2deg,
-        transparent 0px,
-        transparent 45px,
-        rgba(58, 159, 212, 0.05) 45px,
-        rgba(58, 159, 212, 0.05) 46px
-    );
-    animation: co-rainFall 2s linear infinite;
-    animation-delay: -0.7s
-}
 
 /* ═══ KEYFRAMES ═══ */
 @keyframes co-fadeUp {
@@ -781,43 +738,16 @@ div.mt-2 {
     100% { background-position: 200% center }
 }
 
-@keyframes co-orbDrift {
-    0% { transform: translate(0, 0) scale(1) }
-    33% { transform: translate(2%, -1%) scale(1.02) }
-    66% { transform: translate(-1%, 2%) scale(0.98) }
-    100% { transform: translate(1%, -2%) scale(1.01) }
+/* Warm glow — floats up and down on left */
+@keyframes co-glowWarm {
+    0%, 100% { background: radial-gradient(ellipse 80% 50% at 20% 60%, rgba(232, 168, 73, 0.14) 0%, transparent 70%) }
+    50% { background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(232, 168, 73, 0.18) 0%, transparent 70%) }
 }
 
-@keyframes co-bokehDrift {
-    0% { transform: scale(1) translate(0, 0) }
-    25% { transform: scale(1.05) translate(1%, -1%) }
-    50% { transform: scale(0.97) translate(-1%, 1.5%) }
-    75% { transform: scale(1.03) translate(0.5%, -0.5%) }
-    100% { transform: scale(1) translate(-0.5%, 0.5%) }
-}
-
-@keyframes co-heartsA {
-    0% { transform: translateY(0) }
-    100% { transform: translateY(-100vh) }
-}
-
-@keyframes co-heartsB {
-    0% { transform: translateY(0) rotate(0deg) }
-    100% { transform: translateY(-100vh) rotate(15deg) }
-}
-
-/* Name glitch — visual distortion hints at hidden identity */
-/* Name glitch removed — using tagline now */
-
-@keyframes co-sunRays {
-    0% { opacity: 0.6; transform: scale(1) }
-    50% { opacity: 1; transform: scale(1.02) }
-    100% { opacity: 0.7; transform: scale(0.99) }
-}
-
-@keyframes co-rainFall {
-    0% { transform: translateY(-33.33%) }
-    100% { transform: translateY(33.33%) }
+/* Cool glow — floats up and down on right */
+@keyframes co-glowCool {
+    0%, 100% { background: radial-gradient(ellipse 80% 50% at 80% 60%, rgba(58, 159, 212, 0.14) 0%, transparent 70%) }
+    50% { background: radial-gradient(ellipse 80% 50% at 80% 40%, rgba(58, 159, 212, 0.18) 0%, transparent 70%) }
 }
 
 @keyframes co-chatGlow {
@@ -899,6 +829,8 @@ div.mt-2 {
     width: 100%; height: 100%; object-fit: cover; object-position: center top;
     display: block
 }
+video.co-profile-img::-webkit-media-controls { display: none !important }
+video.co-profile-img::-webkit-media-controls-enclosure { display: none !important }
 
 /* About divider removed */
 
@@ -935,13 +867,13 @@ div.mt-2 {
 /* Hide placeholder when any entry is hovered */
 .co-sc-row:has(.co-sc-entry:hover) .co-sc-placeholder { opacity: 0 }
 
-/* Show matching image — nth-of-type targets only img elements */
-.co-sc-row:has(.co-sc-entry:nth-child(1):hover) .co-sc-pimg:nth-of-type(1) { opacity: 1 }
-.co-sc-row:has(.co-sc-entry:nth-child(2):hover) .co-sc-pimg:nth-of-type(2) { opacity: 1 }
-.co-sc-row:has(.co-sc-entry:nth-child(3):hover) .co-sc-pimg:nth-of-type(3) { opacity: 1 }
-.co-sc-row:has(.co-sc-entry:nth-child(4):hover) .co-sc-pimg:nth-of-type(4) { opacity: 1 }
-.co-sc-row:has(.co-sc-entry:nth-child(5):hover) .co-sc-pimg:nth-of-type(5) { opacity: 1 }
-.co-sc-row:has(.co-sc-entry:nth-child(6):hover) .co-sc-pimg:nth-of-type(6) { opacity: 1 }
+/* Show matching image — explicit class targeting */
+.co-sc-row:has(.sc-ent-1:hover) .sc-img-1 { opacity: 1 }
+.co-sc-row:has(.sc-ent-2:hover) .sc-img-2 { opacity: 1 }
+.co-sc-row:has(.sc-ent-3:hover) .sc-img-3 { opacity: 1 }
+.co-sc-row:has(.sc-ent-4:hover) .sc-img-4 { opacity: 1 }
+.co-sc-row:has(.sc-ent-5:hover) .sc-img-5 { opacity: 1 }
+.co-sc-row:has(.sc-ent-6:hover) .sc-img-6 { opacity: 1 }
 
 /* List box — right, with label */
 .co-sc-list-box {

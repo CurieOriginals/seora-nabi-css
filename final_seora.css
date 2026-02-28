@@ -838,7 +838,7 @@ div.mt-2 {
     display: flex; align-items: stretch
 }
 .co-sc-imgwrap {
-    position: relative; width: 100%; min-height: 480px;
+    position: relative; width: 100%; min-height: 550px;
     background: rgba(8, 12, 22, 0.95); overflow: hidden
 }
 .co-sc-placeholder {
@@ -904,20 +904,20 @@ div.mt-2 {
 
 .co-sc-etext { flex: 1; min-width: 0 }
 .co-sc-etext h4 {
-    font-family: var(--co-font-display); font-size: 0.95em; font-weight: 700;
+    font-family: var(--co-font-display); font-size: 1.02em; font-weight: 700;
     color: var(--co-text); margin: 0 0 3px; line-height: 1.3;
     transition: color 0.25s ease
 }
 .co-sc-entry:hover .co-sc-etext h4 { color: var(--co-accent-soft) }
 .co-sc-etext p {
-    font-size: 0.84em; color: var(--co-text-dim); margin: 0; line-height: 1.5
+    font-size: 0.9em; color: var(--co-text-dim); margin: 0; line-height: 1.5
 }
 
 /* Mobile scenarios */
 @media (max-width: 640px) {
     .co-sc-row { flex-direction: column; gap: 12px }
     .co-sc-preview-box { flex: none; max-width: 100% }
-    .co-sc-imgwrap { min-height: 300px }
+    .co-sc-imgwrap { min-height: 340px }
     .co-sc-entries { min-height: auto }
     .co-sc-entry { padding: 14px 16px }
     .co-sc-entry:hover { padding-left: 14px }

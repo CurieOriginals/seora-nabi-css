@@ -294,11 +294,13 @@ div.mt-4 { background: transparent !important; background-color: transparent !im
     }
 }
 
-/* ═══ AVATAR IMAGE STYLING — HIDDEN ═══ */
-.ant-image-img {
+/* ═══ AVATAR IMAGE STYLING — HIDDEN (only in header, not comments) ═══ */
+.ant-col-lg-6 > .ant-ribbon-wrapper .ant-image-img,
+.ant-col-lg-6 > div:not(.mt-4) .ant-image-img {
     display: none !important
 }
-.ant-image, .ant-ribbon-wrapper:has(.ant-image) {
+.ant-col-lg-6 > .ant-ribbon-wrapper:has(.ant-image),
+.ant-col-lg-6 > div:not(.mt-4):has(.ant-image) {
     display: none !important
 }
 
